@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class Request {
 
-    private String title;
-    private Date date;
-    private long sum;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+    private final String title;
+    private final Date date;
+    private final long sum;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
     public Request(String title, long sum) {
         this.title = title;
@@ -16,7 +16,7 @@ public class Request {
         this.sum = sum;
     }
 
-    public String toJson() {
+    public String stringToJson() {
         return "{\"title\": " + "\"" + title + "\", \"date\": " + "\"" + dateFormat.format(date) + "\", \"sum\": " + sum + "}";
     }
 
@@ -25,7 +25,4 @@ public class Request {
             out.println(s);
         }
     }
-
-
-
 }

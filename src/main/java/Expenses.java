@@ -1,24 +1,31 @@
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 @ToString
 public class Expenses {
     @JsonProperty("expenses")
     private Map<String, Long> expenses;
 
+    public Expenses(Map<String, Long> expenses) {
+        this.expenses = expenses;
+    }
+
+    public Expenses() {
+    }
+
+    public Map<String, Long> getExpenses() {
+        return expenses;
+    }
+
+    public void setExpenses(Map<String, Long> expenses) {
+        this.expenses = expenses;
+    }
 
     public static Map<String, Long> initHashMap(Map<String, String> categories) {
         Map<String, Long> expenses = new HashMap<>();
@@ -60,7 +67,7 @@ public class Expenses {
         }
         return "{\"MaxCategory\": " +
                 "{\"category\": " + "\"" + category + "\", " +
-                "\"sum\": " +  + sum + "}" +
+                "\"sum\": " + sum + "}" +
                 "}";
     }
 
