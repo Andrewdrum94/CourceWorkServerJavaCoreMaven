@@ -47,6 +47,21 @@ public class Expenses {
         }
     }
 
+    public void calcNewExpenses(Map<String, String> categories, RequestDto dto) {
+        Optional<String> categoryOpt = categories.keySet().stream()
+                .filter(value -> dto.getTitle().equals(value))
+                .findFirst();
+        if (categoryOpt.isPresent()) {
+            String category = categories.get(categoryOpt.get());
+            long price = (expenses.get(category) + dto.getSum());
+            expenses.put(category, price);
+        } else {
+            String category = "другое";
+            long price = expenses.get(category) + dto.getSum();
+            expenses.put(category, price);
+        }
+    }
+
 
     public void saveExpensesJson() {
         try {
