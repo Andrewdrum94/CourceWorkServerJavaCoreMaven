@@ -75,7 +75,7 @@ public class Expenses {
     public String sendJsonMaxCategory() {
         String category = null;
         long sum = 0L;
-         Optional<Map.Entry<String, Long>> maxCategory = expenses.entrySet().stream().max(Map.Entry.comparingByValue());
+        Optional<Map.Entry<String, Long>> maxCategory = expenses.entrySet().stream().max(Map.Entry.comparingByValue());
         if (maxCategory.isPresent()) {
             sum = maxCategory.get().getValue();
             category = maxCategory.get().getKey();
